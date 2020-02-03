@@ -24,33 +24,93 @@ export default App;
 ```
 
 #### functional subcomponents
-`ParentComponent.js`
 ```
-render() {
-	return (
-		<SubComponent foo={5} />
-	)
+import  React  from  'react';
+import  './App.css';
+
+function  Welcome(props) {
+	return  <h1>Hello, {props.name}</h1>;
 }
 
-function SubComponent(props) {
+function  App() {
 	return (
-		<h2>foo plus 3 = {3 + this.props.foo}</h2>
-	)
+		<div>
+			<Welcome  name="Sara"  />
+			<Welcome  name="Cahal"  />
+			<Welcome  name="Edite"  />
+		</div>
+	);
 }
+
+export  default  App;
 ```
 #### click handlers
 ```
-class ParentComponent extends React.Component {
+import React from 'react';
+import './App.css';
+
+function Welcome(props) {
+	return <h1 
+		onClick={props.onClick} 
+		id={props.id}>Hello, {props.name} ({props.val})
+	</h1>;
+}
+ 
+class App extends React.Component {
 	constructor() {
-		super();
+		super()
+		this.state = {
+			saraClicks: 0,
+			cahalClicks: 0,
+			editeClicks: 0
+		};
 	}
-	state = {
-		myCounter: 0
-	}
-	clickHandler = (val) {
-		this.setState({ myCounter: val });
+
+	handleClick = (event) => {
+		this.setState({[event.target.id]: this.state[event.target.id]+1})
 	}
 	render() {
 		return (
-			<ChildComponent clickHandler={clickHandler}
+		<div>
+			<Welcome onClick={this.handleClick} id={'saraClicks'} val={this.state.saraClicks} name="Sara" />
+			<Welcome onClick={this.handleClick} id={'cahalClicks' } val={this.state.cahalClicks} name="Cahal" />
+			<Welcome onClick={this.handleClick} id={'editeClicks'} val={this.state.editeClicks} name="Edite" />
+		</div>
+		);
+	}
+ }
+	
+export default App;
+```
+#### Forms
+_Forms in React are interesting because the values have to be saved up to the state onChange_
+_1. Declare a state property for every element in the form_
+_2. Make sure every element contains an id="stateName", a value={this.state.stateName}, and onChange={this.handleChange(event)}_
+_3. add the handleChange function to put the value of any form element into its state field._
+```
+class Form extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			formField1: '',
+			formField2: ''
+		};
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(event) {
+		this.setState({ [event.target.id]: event.target.value })
+	}
+
+	render() {
+		return (
+			<form>
+				<input type="text" id="formField1" 
+					    value={this.state.formField1} onChange={this.handleChange}
+				/> 
+				{this.state.formField1}
+			</form>
+		)
+	}
+}
 ```
