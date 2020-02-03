@@ -84,10 +84,12 @@ export default App;
 ```
 #### Forms
 _Forms in React are interesting because the values have to be saved up to the state onChange_
-_1. Declare a state property for every element in the form_
-_2. Make sure every element contains an id="stateName", a value={this.state.stateName}, and onChange={this.handleChange(event)}_
-_3. add the handleChange function to put the value of any form element into its state field._
-```
+
+ 1. _Declare a state property for every element in the form_
+ 2. Make sure every element contains an id="stateName", a value={this.state.stateName}, and
+ onChange={this.handleChange(event)}
+ 3. add the handleChange function to put the value of any form element into its state field._
+
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
