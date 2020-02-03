@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
 import './App.css';
 
 function Welcome(props) {
@@ -57,6 +59,29 @@ class App extends React.Component {
 			<Welcome onClick={this.handleClick} id={'editeClicks'} 
 			         val={this.state.editeClicks} name="Edite" />
 			<Form />
+
+		<Router>
+			<div>
+				<ul>
+					<li><Link to="/" >Default Route</Link></li>
+					<li><Link to="/details" >Details Route</Link></li>
+				</ul>
+			</div>
+			<Switch>
+				<Route path="/" exact>
+					<h1>Default Route Here</h1>
+				</Route>
+
+				<Route path="/details" exact>
+					<h1>Details Route</h1>
+				</Route>
+
+
+			</Switch>
+		</Router>
+
+
+
 		</div>
 		);
 	}

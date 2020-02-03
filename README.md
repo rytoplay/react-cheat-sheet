@@ -119,4 +119,31 @@ class Form extends React.Component {
 		)
 	}
 }
+
 ```
+#### Routing
+
+`import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'`
+
+```
+<Router>
+	<div>
+		<ul>
+			<li><Link to="/" >Default Route</Link></li>
+			<li><Link to="/details" >Details Route</Link></li>
+		</ul>
+	</div>
+	<Switch>
+		<Route path="/" exact>
+			<h1>Default Route Here</h1>
+		</Route>
+
+		<Route path="/details" exact>
+			<h1>Details Route</h1>
+		</Route>
+
+
+	</Switch>
+</Router>
+```
+
