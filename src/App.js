@@ -15,10 +15,10 @@ class Form extends React.Component {
 			formField1: '',
 			formField2: ''
 		};
-		this.handleChange = this.handleChange.bind(this);
+		//this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(event) {
+	handleChange = (event) => {
 		this.setState({ [event.target.id]: event.target.value })
 	}
 
@@ -50,9 +50,12 @@ class App extends React.Component {
 	render() {
 		return (
 		<div>
-			<Welcome onClick={this.handleClick} id={'saraClicks'} val={this.state.saraClicks} name="Sara" />
-			<Welcome onClick={this.handleClick} id={'cahalClicks' } val={this.state.cahalClicks} name="Cahal" />
-			<Welcome onClick={this.handleClick} id={'editeClicks'} val={this.state.editeClicks} name="Edite" />
+			<Welcome onClick={this.handleClick} id={'saraClicks'} 
+			         val={this.state.saraClicks} name="Sara" />
+			<Welcome onClick={this.handleClick} id={'cahalClicks' } 
+			         val={this.state.cahalClicks} name="Cahal" />
+			<Welcome onClick={this.handleClick} id={'editeClicks'} 
+			         val={this.state.editeClicks} name="Edite" />
 			<Form />
 		</div>
 		);
