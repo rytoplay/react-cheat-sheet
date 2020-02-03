@@ -90,6 +90,7 @@ _Forms in React are interesting because the values have to be saved up to the st
  onChange={this.handleChange(event)}
  3. add the handleChange function to put the value of any form element into its state field._
 
+```
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
